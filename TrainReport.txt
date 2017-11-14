@@ -1,0 +1,293 @@
+15:09:08,076 INFO  ~ Loaded [CpuBackend] backend
+15:09:08,500 INFO  ~ Number of threads used for NativeOps: 4
+15:09:08,824 INFO  ~ Number of threads used for BLAS: 4
+15:09:08,825 INFO  ~ Backend used: [CPU]; OS: [Windows 7]
+15:09:08,825 INFO  ~ Cores: [8]; Memory: [7.7GB];
+15:09:08,825 INFO  ~ Blas vendor: [OPENBLAS]
+15:09:08,987 INFO  ~ **** Build Model ****
+15:09:08,987 INFO  ~ Using cached model at C:\Users\Yuyi\.deeplearning4j\vgg16_dl4j_inference.zip
+15:09:08,987 INFO  ~ Verifying download...
+15:09:09,556 INFO  ~ Checksum local is 3501732770, expecting 3501732770
+15:09:16,411 INFO  ~ Starting ComputationGraph with WorkspaceModes set to [training: NONE; inference: SINGLE]
+15:09:19,946 INFO  ~ Gradients for the frozen layer are not set and will therefore will not be updated.Warning will be issued only once per instance
+15:09:20,043 INFO  ~ 
+============================================================================================================================================
+VertexName (VertexType)                 nIn,nOut       TotalParams    ParamsShape                    Vertex Inputs
+============================================================================================================================================
+input_1 (InputVertex)                   -,-            -              -                              -
+block1_conv1 (Frozen ConvolutionLayer)  3,64           1792           b:{1,64}, W:{64,3,3,3}         [input_1]
+block1_conv2 (Frozen ConvolutionLayer)  64,64          36928          b:{1,64}, W:{64,64,3,3}        [block1_conv1]
+block1_pool (Frozen SubsamplingLayer)   -,-            0              -                              [block1_conv2]
+block2_conv1 (Frozen ConvolutionLayer)  64,128         73856          b:{1,128}, W:{128,64,3,3}      [block1_pool]
+block2_conv2 (Frozen ConvolutionLayer)  128,128        147584         b:{1,128}, W:{128,128,3,3}     [block2_conv1]
+block2_pool (Frozen SubsamplingLayer)   -,-            0              -                              [block2_conv2]
+block3_conv1 (Frozen ConvolutionLayer)  128,256        295168         b:{1,256}, W:{256,128,3,3}     [block2_pool]
+block3_conv2 (Frozen ConvolutionLayer)  256,256        590080         b:{1,256}, W:{256,256,3,3}     [block3_conv1]
+block3_conv3 (Frozen ConvolutionLayer)  256,256        590080         b:{1,256}, W:{256,256,3,3}     [block3_conv2]
+block3_pool (Frozen SubsamplingLayer)   -,-            0              -                              [block3_conv3]
+block4_conv1 (Frozen ConvolutionLayer)  256,512        1180160        b:{1,512}, W:{512,256,3,3}     [block3_pool]
+block4_conv2 (Frozen ConvolutionLayer)  512,512        2359808        b:{1,512}, W:{512,512,3,3}     [block4_conv1]
+block4_conv3 (Frozen ConvolutionLayer)  512,512        2359808        b:{1,512}, W:{512,512,3,3}     [block4_conv2]
+block4_pool (Frozen SubsamplingLayer)   -,-            0              -                              [block4_conv3]
+block5_conv1 (Frozen ConvolutionLayer)  512,512        2359808        b:{1,512}, W:{512,512,3,3}     [block4_pool]
+block5_conv2 (Frozen ConvolutionLayer)  512,512        2359808        b:{1,512}, W:{512,512,3,3}     [block5_conv1]
+block5_conv3 (Frozen ConvolutionLayer)  512,512        2359808        b:{1,512}, W:{512,512,3,3}     [block5_conv2]
+block5_pool (Frozen SubsamplingLayer)   -,-            0              -                              [block5_conv3]
+flatten (PreprocessorVertex)            -,-            -              -                              [block5_pool]
+fc1 (Frozen DenseLayer)                 25088,4096     102764544      b:{1,4096}, W:{25088,4096}     [flatten]
+fc2 (Frozen DenseLayer)                 4096,4096      16781312       b:{1,4096}, W:{4096,4096}      [fc1]
+predictions (OutputLayer)               4096,101       413797         b:{1,101}, W:{4096,101}        [fc2]
+--------------------------------------------------------------------------------------------------------------------------------------------
+            Total Parameters:  134674341
+        Trainable Parameters:  413797
+           Frozen Parameters:  134260544
+============================================================================================================================================
+
+15:09:20,044 INFO  ~ Model build complete
+15:09:20,044 INFO  ~ *****TRAIN MODEL********
+15:09:20,724 INFO  ~ Frozen layer instance found! Frozen layers are treated as always in test mode. Warning will only be issued once per instance
+15:42:03,257 INFO  ~ Epoch 1, number of batches completed 251
+16:15:06,362 INFO  ~ Epoch 2, number of batches completed 251
+16:48:15,902 INFO  ~ Epoch 3, number of batches completed 251
+17:21:29,310 INFO  ~ Epoch 4, number of batches completed 251
+17:54:07,217 INFO  ~ Epoch 5, number of batches completed 251
+18:27:05,921 INFO  ~ Epoch 6, number of batches completed 251
+19:00:44,901 INFO  ~ Epoch 7, number of batches completed 251
+19:33:48,446 INFO  ~ Epoch 8, number of batches completed 251
+20:06:22,236 INFO  ~ Epoch 9, number of batches completed 251
+20:39:42,554 INFO  ~ Epoch 10, number of batches completed 251
+20:40:03,403 INFO  ~ ******EVALUATE MODEL******
+20:40:03,403 INFO  ~ [Faces, Faces_easy, Leopards, Motorbikes, accordion, airplanes, anchor, ant, barrel, bass, beaver, binocular, bonsai, brain, brontosaurus, buddha, butterfly, camera, cannon, car_side, ceiling_fan, cellphone, chair, chandelier, cougar_body, cougar_face, crab, crayfish, crocodile, crocodile_head, cup, dalmatian, dollar_bill, dolphin, dragonfly, electric_guitar, elephant, emu, euphonium, ewer, ferry, flamingo, flamingo_head, garfield, gerenuk, gramophone, grand_piano, hawksbill, headphone, hedgehog, helicopter, ibis, inline_skate, joshua_tree, kangaroo, ketch, lamp, laptop, llama, lobster, lotus, mandolin, mayfly, menorah, metronome, minaret, nautilus, octopus, okapi, pagoda, panda, pigeon, pizza, platypus, pyramid, revolver, rhino, rooster, saxophone, schooner, scissors, scorpion, sea_horse, snoopy, soccer_ball, stapler, starfish, stegosaurus, stop_sign, strawberry, sunflower, tick, trilobite, umbrella, watch, water_lilly, wheelchair, wild_cat, windsor_chair, wrench, yin_yang]
+20:46:35,554 INFO  ~ 
+Examples labeled as Faces classified by model as Faces: 3 times
+Examples labeled as Faces classified by model as Faces_easy: 3 times
+Examples labeled as Faces_easy classified by model as Faces: 1 times
+Examples labeled as Faces_easy classified by model as Faces_easy: 5 times
+Examples labeled as Leopards classified by model as Leopards: 6 times
+Examples labeled as Motorbikes classified by model as Motorbikes: 6 times
+Examples labeled as accordion classified by model as accordion: 6 times
+Examples labeled as airplanes classified by model as airplanes: 6 times
+Examples labeled as anchor classified by model as anchor: 3 times
+Examples labeled as anchor classified by model as cannon: 2 times
+Examples labeled as anchor classified by model as octopus: 1 times
+Examples labeled as ant classified by model as ant: 4 times
+Examples labeled as ant classified by model as crab: 1 times
+Examples labeled as ant classified by model as dragonfly: 1 times
+Examples labeled as barrel classified by model as barrel: 6 times
+Examples labeled as bass classified by model as bass: 4 times
+Examples labeled as bass classified by model as dragonfly: 1 times
+Examples labeled as bass classified by model as garfield: 1 times
+Examples labeled as bass classified by model as metronome: 1 times
+Examples labeled as beaver classified by model as bass: 1 times
+Examples labeled as beaver classified by model as beaver: 2 times
+Examples labeled as beaver classified by model as emu: 1 times
+Examples labeled as beaver classified by model as hedgehog: 1 times
+Examples labeled as beaver classified by model as rhino: 1 times
+Examples labeled as binocular classified by model as binocular: 5 times
+Examples labeled as binocular classified by model as cup: 1 times
+Examples labeled as binocular classified by model as stapler: 1 times
+Examples labeled as bonsai classified by model as bonsai: 4 times
+Examples labeled as bonsai classified by model as joshua_tree: 1 times
+Examples labeled as bonsai classified by model as water_lilly: 1 times
+Examples labeled as brain classified by model as brain: 4 times
+Examples labeled as brain classified by model as dragonfly: 1 times
+Examples labeled as brain classified by model as mayfly: 1 times
+Examples labeled as brontosaurus classified by model as bonsai: 1 times
+Examples labeled as brontosaurus classified by model as brontosaurus: 2 times
+Examples labeled as brontosaurus classified by model as emu: 1 times
+Examples labeled as brontosaurus classified by model as headphone: 1 times
+Examples labeled as brontosaurus classified by model as wild_cat: 1 times
+Examples labeled as buddha classified by model as buddha: 5 times
+Examples labeled as buddha classified by model as butterfly: 1 times
+Examples labeled as butterfly classified by model as butterfly: 5 times
+Examples labeled as butterfly classified by model as snoopy: 1 times
+Examples labeled as camera classified by model as camera: 6 times
+Examples labeled as cannon classified by model as airplanes: 1 times
+Examples labeled as cannon classified by model as cannon: 5 times
+Examples labeled as cannon classified by model as octopus: 1 times
+Examples labeled as car_side classified by model as car_side: 6 times
+Examples labeled as ceiling_fan classified by model as ceiling_fan: 7 times
+Examples labeled as cellphone classified by model as cellphone: 6 times
+Examples labeled as chair classified by model as anchor: 1 times
+Examples labeled as chair classified by model as chair: 5 times
+Examples labeled as chandelier classified by model as buddha: 1 times
+Examples labeled as chandelier classified by model as chandelier: 5 times
+Examples labeled as chandelier classified by model as octopus: 1 times
+Examples labeled as cougar_body classified by model as cougar_body: 6 times
+Examples labeled as cougar_body classified by model as hawksbill: 1 times
+Examples labeled as cougar_face classified by model as cougar_face: 4 times
+Examples labeled as cougar_face classified by model as garfield: 1 times
+Examples labeled as cougar_face classified by model as okapi: 1 times
+Examples labeled as crab classified by model as crab: 6 times
+Examples labeled as crab classified by model as garfield: 1 times
+Examples labeled as crayfish classified by model as crab: 2 times
+Examples labeled as crayfish classified by model as crayfish: 2 times
+Examples labeled as crayfish classified by model as lobster: 1 times
+Examples labeled as crayfish classified by model as trilobite: 1 times
+Examples labeled as crocodile classified by model as crocodile: 3 times
+Examples labeled as crocodile classified by model as crocodile_head: 2 times
+Examples labeled as crocodile classified by model as dragonfly: 1 times
+Examples labeled as crocodile_head classified by model as crab: 1 times
+Examples labeled as crocodile_head classified by model as crocodile: 1 times
+Examples labeled as crocodile_head classified by model as crocodile_head: 4 times
+Examples labeled as cup classified by model as cup: 6 times
+Examples labeled as dalmatian classified by model as dalmatian: 6 times
+Examples labeled as dollar_bill classified by model as dollar_bill: 5 times
+Examples labeled as dollar_bill classified by model as snoopy: 1 times
+Examples labeled as dolphin classified by model as dolphin: 6 times
+Examples labeled as dragonfly classified by model as dragonfly: 6 times
+Examples labeled as electric_guitar classified by model as electric_guitar: 4 times
+Examples labeled as electric_guitar classified by model as platypus: 1 times
+Examples labeled as electric_guitar classified by model as wrench: 1 times
+Examples labeled as elephant classified by model as elephant: 5 times
+Examples labeled as elephant classified by model as rhino: 1 times
+Examples labeled as emu classified by model as beaver: 1 times
+Examples labeled as emu classified by model as emu: 4 times
+Examples labeled as emu classified by model as joshua_tree: 1 times
+Examples labeled as euphonium classified by model as euphonium: 6 times
+Examples labeled as ewer classified by model as ewer: 6 times
+Examples labeled as ferry classified by model as ferry: 5 times
+Examples labeled as ferry classified by model as schooner: 1 times
+Examples labeled as flamingo classified by model as flamingo: 6 times
+Examples labeled as flamingo_head classified by model as flamingo: 1 times
+Examples labeled as flamingo_head classified by model as flamingo_head: 4 times
+Examples labeled as flamingo_head classified by model as sea_horse: 1 times
+Examples labeled as garfield classified by model as garfield: 6 times
+Examples labeled as gerenuk classified by model as cougar_body: 1 times
+Examples labeled as gerenuk classified by model as gerenuk: 6 times
+Examples labeled as gramophone classified by model as ant: 1 times
+Examples labeled as gramophone classified by model as gramophone: 4 times
+Examples labeled as gramophone classified by model as wrench: 1 times
+Examples labeled as grand_piano classified by model as grand_piano: 5 times
+Examples labeled as grand_piano classified by model as stapler: 1 times
+Examples labeled as hawksbill classified by model as dragonfly: 1 times
+Examples labeled as hawksbill classified by model as hawksbill: 5 times
+Examples labeled as headphone classified by model as headphone: 6 times
+Examples labeled as hedgehog classified by model as hedgehog: 6 times
+Examples labeled as helicopter classified by model as helicopter: 6 times
+Examples labeled as ibis classified by model as flamingo: 1 times
+Examples labeled as ibis classified by model as flamingo_head: 1 times
+Examples labeled as ibis classified by model as ibis: 4 times
+Examples labeled as inline_skate classified by model as inline_skate: 6 times
+Examples labeled as joshua_tree classified by model as crab: 1 times
+Examples labeled as joshua_tree classified by model as joshua_tree: 6 times
+Examples labeled as kangaroo classified by model as kangaroo: 5 times
+Examples labeled as kangaroo classified by model as llama: 1 times
+Examples labeled as ketch classified by model as ferry: 1 times
+Examples labeled as ketch classified by model as ketch: 2 times
+Examples labeled as ketch classified by model as schooner: 3 times
+Examples labeled as lamp classified by model as dolphin: 1 times
+Examples labeled as lamp classified by model as lamp: 4 times
+Examples labeled as lamp classified by model as menorah: 1 times
+Examples labeled as laptop classified by model as chair: 1 times
+Examples labeled as laptop classified by model as laptop: 5 times
+Examples labeled as llama classified by model as emu: 1 times
+Examples labeled as llama classified by model as llama: 4 times
+Examples labeled as llama classified by model as okapi: 1 times
+Examples labeled as lobster classified by model as crayfish: 2 times
+Examples labeled as lobster classified by model as lobster: 3 times
+Examples labeled as lobster classified by model as lotus: 1 times
+Examples labeled as lotus classified by model as lotus: 5 times
+Examples labeled as lotus classified by model as water_lilly: 1 times
+Examples labeled as mandolin classified by model as dragonfly: 1 times
+Examples labeled as mandolin classified by model as electric_guitar: 2 times
+Examples labeled as mandolin classified by model as mandolin: 4 times
+Examples labeled as mayfly classified by model as ant: 1 times
+Examples labeled as mayfly classified by model as crab: 1 times
+Examples labeled as mayfly classified by model as crayfish: 1 times
+Examples labeled as mayfly classified by model as mayfly: 3 times
+Examples labeled as menorah classified by model as ceiling_fan: 1 times
+Examples labeled as menorah classified by model as menorah: 5 times
+Examples labeled as metronome classified by model as metronome: 6 times
+Examples labeled as metronome classified by model as stapler: 1 times
+Examples labeled as minaret classified by model as minaret: 6 times
+Examples labeled as nautilus classified by model as nautilus: 7 times
+Examples labeled as octopus classified by model as octopus: 3 times
+Examples labeled as octopus classified by model as scorpion: 3 times
+Examples labeled as octopus classified by model as sea_horse: 1 times
+Examples labeled as okapi classified by model as okapi: 6 times
+Examples labeled as pagoda classified by model as minaret: 1 times
+Examples labeled as pagoda classified by model as pagoda: 5 times
+Examples labeled as panda classified by model as anchor: 1 times
+Examples labeled as panda classified by model as panda: 5 times
+Examples labeled as pigeon classified by model as helicopter: 1 times
+Examples labeled as pigeon classified by model as pigeon: 5 times
+Examples labeled as pizza classified by model as cannon: 1 times
+Examples labeled as pizza classified by model as pizza: 5 times
+Examples labeled as platypus classified by model as barrel: 1 times
+Examples labeled as platypus classified by model as hedgehog: 1 times
+Examples labeled as platypus classified by model as platypus: 5 times
+Examples labeled as pyramid classified by model as metronome: 2 times
+Examples labeled as pyramid classified by model as pyramid: 4 times
+Examples labeled as revolver classified by model as electric_guitar: 1 times
+Examples labeled as revolver classified by model as revolver: 5 times
+Examples labeled as rhino classified by model as elephant: 1 times
+Examples labeled as rhino classified by model as rhino: 4 times
+Examples labeled as rhino classified by model as stegosaurus: 1 times
+Examples labeled as rooster classified by model as butterfly: 1 times
+Examples labeled as rooster classified by model as pigeon: 1 times
+Examples labeled as rooster classified by model as rooster: 5 times
+Examples labeled as saxophone classified by model as saxophone: 6 times
+Examples labeled as schooner classified by model as ketch: 2 times
+Examples labeled as schooner classified by model as schooner: 5 times
+Examples labeled as scissors classified by model as platypus: 1 times
+Examples labeled as scissors classified by model as saxophone: 1 times
+Examples labeled as scissors classified by model as scissors: 5 times
+Examples labeled as scorpion classified by model as scorpion: 6 times
+Examples labeled as sea_horse classified by model as crab: 2 times
+Examples labeled as sea_horse classified by model as crocodile: 1 times
+Examples labeled as sea_horse classified by model as metronome: 1 times
+Examples labeled as sea_horse classified by model as sea_horse: 2 times
+Examples labeled as snoopy classified by model as garfield: 1 times
+Examples labeled as snoopy classified by model as snoopy: 4 times
+Examples labeled as snoopy classified by model as wheelchair: 1 times
+Examples labeled as soccer_ball classified by model as soccer_ball: 6 times
+Examples labeled as stapler classified by model as cellphone: 1 times
+Examples labeled as stapler classified by model as euphonium: 1 times
+Examples labeled as stapler classified by model as gramophone: 1 times
+Examples labeled as stapler classified by model as headphone: 1 times
+Examples labeled as stapler classified by model as stapler: 2 times
+Examples labeled as starfish classified by model as starfish: 6 times
+Examples labeled as stegosaurus classified by model as rooster: 1 times
+Examples labeled as stegosaurus classified by model as stegosaurus: 5 times
+Examples labeled as stop_sign classified by model as stop_sign: 6 times
+Examples labeled as strawberry classified by model as lobster: 1 times
+Examples labeled as strawberry classified by model as strawberry: 6 times
+Examples labeled as sunflower classified by model as butterfly: 1 times
+Examples labeled as sunflower classified by model as sea_horse: 1 times
+Examples labeled as sunflower classified by model as sunflower: 4 times
+Examples labeled as tick classified by model as ant: 2 times
+Examples labeled as tick classified by model as tick: 4 times
+Examples labeled as trilobite classified by model as trilobite: 6 times
+Examples labeled as umbrella classified by model as joshua_tree: 1 times
+Examples labeled as umbrella classified by model as pyramid: 1 times
+Examples labeled as umbrella classified by model as umbrella: 4 times
+Examples labeled as watch classified by model as chair: 1 times
+Examples labeled as watch classified by model as watch: 5 times
+Examples labeled as water_lilly classified by model as lotus: 2 times
+Examples labeled as water_lilly classified by model as water_lilly: 4 times
+Examples labeled as wheelchair classified by model as Motorbikes: 1 times
+Examples labeled as wheelchair classified by model as snoopy: 1 times
+Examples labeled as wheelchair classified by model as wheelchair: 4 times
+Examples labeled as wild_cat classified by model as stegosaurus: 1 times
+Examples labeled as wild_cat classified by model as wild_cat: 6 times
+Examples labeled as windsor_chair classified by model as chair: 2 times
+Examples labeled as windsor_chair classified by model as windsor_chair: 4 times
+Examples labeled as wrench classified by model as ceiling_fan: 1 times
+Examples labeled as wrench classified by model as scissors: 1 times
+Examples labeled as wrench classified by model as wrench: 4 times
+Examples labeled as yin_yang classified by model as barrel: 1 times
+Examples labeled as yin_yang classified by model as yin_yang: 6 times
+
+
+==========================Scores========================================
+ # of classes:    101
+ Accuracy:        0.7843
+ Precision:       0.8082
+ Recall:          0.7848
+ F1 Score:        0.7828
+Precision, recall & F1: macro-averaged (equally weighted avg. of 101 classes)
+========================================================================
+20:46:35,569 INFO  ~ ******SAVE TRAINED MODEL******
+
+Process finished with exit code 0
